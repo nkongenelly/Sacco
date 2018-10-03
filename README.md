@@ -33,12 +33,6 @@ Exit
 quit;
 ```
 
-On your terminal open mysql
-
-```
-mysql -u root -p
-```
-
 Clone the repository
 
 ```
