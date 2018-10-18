@@ -27,7 +27,7 @@ class UserTest extends TestCase
                 'user_email'=>'adminkisborana@gmail.com',
                 'id' => 1,
                 'email_verified_at' => null,
-                'user_password' => '$2y$10$Vtw4gNloeFKcjXM3qw0lBe/xFsbHVQt1U.TdJQwx0/QWIpA/ppzQ2',
+                'user_password' => '$2y$10$rxUG6QajfLbycPCqM5eDLOds0itOp9OJBFFw5g6PBaMK.WkgeIYe6',
                 'user_status' => 1,
                 'deleted' => 0,
                 'deleted_on' => null,
