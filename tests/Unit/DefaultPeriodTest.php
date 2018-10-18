@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\DefaultPeriod;
 
-class DefaultPeriods extends TestCase
+class DefaultPeriodTest extends TestCase
 {
     /**
      * A basic test example.
@@ -15,12 +15,12 @@ class DefaultPeriods extends TestCase
      */
     public function testDefaultPeriodExists()
     {
-        //given I want to login
+        //given I want to default_period table to have default periods values
 
-        //when I login. When i query the user table
+        // When I query the default_period table
         $period = DefaultPeriod::pluck('default_period')->toArray();
 
-        //then default user will login without registeation. The user able will have a default user.
+        //then default_period values should have the following
         $this->assertEquals([
              0 => '30',
             1 => '60',
