@@ -24,7 +24,7 @@ class CreateLoanTypesTable extends Migration
             $table->integer('minimum_number_of_guarantors')->nullable();
             $table->integer('custom_number_of_guarantors')->nullable();
             $table->double('interest_rate',11)->nullable();
-            $table->integer('deleted')->default('0');
+            $table->integer('deleted')->default(0);
             $table->timestamp('deleted_on')->nullable();
             $table->integer('deleted_by')->nullable();
             $table->integer('created_by')->nullable();

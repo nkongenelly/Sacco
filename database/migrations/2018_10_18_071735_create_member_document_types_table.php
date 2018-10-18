@@ -16,7 +16,7 @@ class CreateMemberDocumentTypesTable extends Migration
         Schema::create('member_document_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('document_type_name');
-            $table->integer('deleted')->default('0');
+            $table->integer('deleted')->default(0);
             $table->timestamp('deleted_on')->nullable();
             $table->integer('deleted_by')->nullable();
             $table->integer('created_by')->nullable();
