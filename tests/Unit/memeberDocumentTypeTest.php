@@ -23,6 +23,11 @@ class UserTest extends TestCase
             ['document_type_name' => 'national_id_card',
             'document_type_name' => 'passport_photo',
                 'deleted'=>0,
+                'deleted_on'=>null,
+                'deleted_by'=>null,
+                'created_by'=>null,
+                'created_at'=>null,
+                'updated_at'=>null,
             ]
     ],$memeberDocumentType
         );
