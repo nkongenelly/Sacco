@@ -22,3 +22,12 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Loan_type::class, function (Faker $faker) {
+    return [
+        'loan_type_name' => $faker->name,
+        'loan_type_name' => $faker->name1,
+       
+    ];
+});
+
