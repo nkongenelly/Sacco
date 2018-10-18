@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Loan_status;
+use App\Member_document_type;
 
 class UserTest extends TestCase
 {
@@ -13,20 +13,18 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testdocumentTypeTest()
     {
       
-        $loanstatus = Loan_status::pluck('loan_status_name')->toArray();
+        $memeberDocumentType = Member_document_type::pluck('document_type_name')->toArray();
 
       
         $this->assertEquals(
             [
-                "applied",
-                "approved",
-                "disbursed",
-                "paid",
+                "national_id_card",
+                "passport_photo",
               ]
-    ,$loanstatus
+    ,$memeberDocumentType
         );
 
         
