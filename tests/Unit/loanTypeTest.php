@@ -16,7 +16,7 @@ class UserTest extends TestCase
     public function testBasicTest()
     {
       
-        $loanType = Loan_type::all();
+        $loanType = Loan_type::all()->toArray();
 
       
         $this->assertEquals([
@@ -32,6 +32,7 @@ class UserTest extends TestCase
                 'custom_number_of_guarantors'=>null,
                 'interest_rate'=>null,
                 'deleted_on'=>null,
+                'id'=>1
 
             ]
     ],$loanType

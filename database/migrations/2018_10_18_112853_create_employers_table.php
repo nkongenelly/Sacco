@@ -16,18 +16,19 @@ class CreateEmployersTable extends Migration
         Schema::create('employers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('employer_name');
-            $table->string('employer_email');
-            $table->string('employer_phone_number');
-            $table->string('employer_postal_address');
-            $table->integer('deleted');
-            $table->timestamps('deleted_on');
-            $table->integer('deleted_by');
-            $table->integer('created_by');
+            $table->string('employer_email')->nullable();
+            $table->string('employer_phone_number')->nullable();
+            $table->string('employer_postal_address')->nullable();
+            $table->integer('deleted')->default(0);
+            $table->timestamp('deleted_on')->nullable();
+            $table->integer('deleted_by')->nullable();
+            $table->integer('created_by')->nullable();
             $table->timestamps();
         });
-        DB::table('default_periods')->insert(array(
+        DB::table('employers')->insert(array(
             ['employer_name'=>'kisima'],
             ['employer_name'=>'borana'],
+            
         ));
 
     }
