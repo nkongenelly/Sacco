@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoanStatusesTable extends Migration
+class CreateEmployersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,24 @@ class CreateLoanStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('loan_statuses', function (Blueprint $table) {
+        Schema::create('employers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('loan_status_name');
+            $table->string('employer_name');
+            $table->string('employer_email')->nullable();
+            $table->string('employer_phone_number')->nullable();
+            $table->string('employer_postal_address')->nullable();
             $table->integer('deleted')->default(0);
             $table->timestamp('deleted_on')->nullable();
             $table->integer('deleted_by')->nullable();
             $table->integer('created_by')->nullable();
             $table->timestamps();
         });
+        DB::table('employers')->insert(array(
+            ['employer_name'=>'kisima'],
+            ['employer_name'=>'borana'],
+            
+        ));
 
-        DB::table('loan_statuses')->insert(
-            array(
-                ['loan_status_name' => 'applied'],
-                ['loan_status_name' => 'approved'],
-                ['loan_status_name' => 'disbursed'],
-                ['loan_status_name' => 'paid'],
-         
-               
-  ));
     }
 
     /**
@@ -41,6 +40,6 @@ class CreateLoanStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loan_statuses');
+        Schema::dropIfExists('employers');
     }
 }
