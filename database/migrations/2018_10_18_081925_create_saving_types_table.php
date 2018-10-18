@@ -18,10 +18,16 @@ class CreateSavingTypesTable extends Migration
             $table->string('savings_type_name',255);
             $table->integer('deleted')->default(0);
             $table->timestamp('deleted_on')->nullable();
-            $table->integer('deleted_by');
-            $table->integer('created_by');
+            $table->integer('deleted_by')->nullable();;
+            $table->integer('created_by')->nullable();;
             $table->timestamps();
         });
+        DB::table('saving_types')->insert(array(
+            ['savings_type_name'=>'Shared Capital'],
+            ['savings_type_name'=>'Share Contribution'],
+            ['savings_type_name'=>'Withdrawals']
+
+        ));
     }
 
     /**
