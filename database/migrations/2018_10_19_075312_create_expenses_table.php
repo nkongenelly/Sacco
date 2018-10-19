@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateExpensesTable extends Migration
 {
@@ -15,12 +15,12 @@ class CreateExpensesTable extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('expense_name');
-            $table->tinyInteger('expense_type_id');
+            $table->string('expense_name', 100);
+            $table->integer('expense_type_id');
             $table->tinyInteger('deleted')->deafult(0);
             $table->date('deleted_on')->nullable();
             $table->integer('deleted_by')->nullable();
-            $table->integer('created_by');
+            $table->integer('created_by')->nullable();
             $table->timestamps();
         });
     }

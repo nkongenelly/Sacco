@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSavingsTable extends Migration
 {
@@ -16,7 +16,7 @@ class CreateSavingsTable extends Migration
         Schema::create('savings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('member_id');
-            $table->integer('savings_type_id');
+            $table->integer('saving_type_id');
             $table->double('saving_amount');
             $table->date('saving_date');
             $table->integer('deleted')->default(0);

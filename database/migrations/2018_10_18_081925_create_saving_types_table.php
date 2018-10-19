@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSavingTypesTable extends Migration
 {
@@ -15,7 +15,7 @@ class CreateSavingTypesTable extends Migration
     {
         Schema::create('saving_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('savings_type_name',255);
+            $table->string('savings_type_name', 255);
             $table->integer('deleted')->default(0);
             $table->timestamp('deleted_on')->nullable();
             $table->integer('deleted_by')->nullable();;
@@ -23,9 +23,9 @@ class CreateSavingTypesTable extends Migration
             $table->timestamps();
         });
         DB::table('saving_types')->insert(array(
-            ['savings_type_name'=>'Shared Capital'],
-            ['savings_type_name'=>'Share Contribution'],
-            ['savings_type_name'=>'Withdrawals']
+            ['savings_type_name' => 'Shared Capital'],
+            ['savings_type_name' => 'Share Contribution'],
+            ['savings_type_name' => 'Withdrawals'],
 
         ));
     }

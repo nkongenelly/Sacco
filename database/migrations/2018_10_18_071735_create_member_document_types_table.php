@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateMemberDocumentTypesTable extends Migration
 {
@@ -25,11 +25,10 @@ class CreateMemberDocumentTypesTable extends Migration
 
         DB::table('member_document_types')->insert(
             array(
-                ['document_type_name' => 'national_id_card'],
-                ['document_type_name' => 'passport_photo'],
-              
-                
-  ));
+                ['document_type_name' => 'National Id Card'],
+                ['document_type_name' => 'Passport Photo'],
+
+            ));
     }
 
     /**
