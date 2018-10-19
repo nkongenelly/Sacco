@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LoanpaymentController extends Controller
+class LoanPaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
