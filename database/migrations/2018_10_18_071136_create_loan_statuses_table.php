@@ -15,7 +15,7 @@ class CreateLoanStatusesTable extends Migration
     {
         Schema::create('loan_statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('loan_status_name');
+            $table->string('loan_status_name',255);
             $table->integer('deleted')->default(0);
             $table->timestamp('deleted_on')->nullable();
             $table->integer('deleted_by')->nullable();
