@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Member_document_type;
+use App\MemberDocumentType;
 
 class UserTest extends TestCase
 {
