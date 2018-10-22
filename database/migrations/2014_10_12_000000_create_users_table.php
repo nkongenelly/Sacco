@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('user_last_name', 255)->default('Kisborana');
             $table->string('user_email')->unique()->nullable()->default('adminkisborana@gmail.com');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('user_password', 255)->default();
+            $table->string('user_password', 255);
             $table->tinyInteger('user_status')->default(1);
             $table->tinyInteger('deleted')->default(0);
             $table->timestamp('deleted_on')->nullable();
