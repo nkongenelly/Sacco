@@ -18,3 +18,8 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+//role routes
+Route::get('/roles', 'RoleController@index');
+Route::get('/role/create', 'RoleController@create');
+Route::post('/roles', 'RoleController@store');
