@@ -16,8 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $generatedPassword = (date('s') + date('i')) . '&' . date('i') . 'Za' . (date('H') + date('i'));
-        return view('admins.createuser', compact('generatedPassword'));
+
     }
 
     /**
@@ -27,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admins.createuser');
     }
 
     /**
@@ -42,13 +41,13 @@ class UserController extends Controller
             'user_first_name' => 'required',
             'user_last_name' => 'required',
             'email' => 'required',
-            'password' => 'required',
         ]);
 
         // $password = Hash::make($request->password);
+        $generatedPassword = (date('s') + date('i')) . '&' . date('i') . 'Za' . (date('H') + date('i'));
 
         User::create([
-            'user_first_name' => $request->user_first_name, 'user_last_name' => $request->user_last_name, 'email' => $request->email, 'password' => Hash::make($request->password), 'user_status' => 1, 'deleted' => 0, 'created_by' => Auth::user()->id,
+            'user_first_name' => $request->user_first_name, 'user_last_name' => $request->user_last_name, 'email' => $request->email, 'password' => Hash::make($generatedPassword), 'user_status' => 1, 'deleted' => 0, 'created_by' => Auth::user()->id,
         ]);
 
         return redirect('/adduser');
