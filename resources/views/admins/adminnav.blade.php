@@ -11,7 +11,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="usersDropdownMenu">
                     <a class="dropdown-item" href="/adduser">Add User</a>
-                    <a class="dropdown-item" href="#">View & Manage users</a>
+                    <a class="dropdown-item" href="/users">View & Manage users</a>
                 </div>
             </li>
             <li class="nav-item active dropdown">
@@ -20,7 +20,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="rolesDropdownMenu">
                     <a class="dropdown-item" href="#">Add Role</a>
-                    <a class="dropdown-item" href="#">View & Manage roles</a>
+                    <a class="dropdown-item" href="">View & Manage roles</a>
                 </div>
             </li>
             <li class="nav-item active dropdown">

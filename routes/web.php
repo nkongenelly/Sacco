@@ -16,6 +16,10 @@
 // });
 Route::get('/adduser', 'UserController@create');
 Route::post('/adduser', 'UserController@store');
+Route::get('/users', 'UserController@index');
+Route::get('/users/edit/{userId}', 'UserController@edit');
+Route::patch('/users/{userId}', 'UserController@update');
+Route::patch('/usersdelete/{userId}', 'UserController@destroy');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
