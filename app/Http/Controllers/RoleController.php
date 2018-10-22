@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Role;
+use App\User;
+
 class RoleController extends Controller
 {
     /**
@@ -13,7 +16,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::all();
+        return view('roles.index', compact(['roles']));
     }
 
     /**
@@ -23,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.createRole');
     }
 
     /**
@@ -34,7 +38,14 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(),[
+            'role_name' => 'required',
+            'role_status' =>'required'
+
+        ]);
+        $roles = Role::all();
+        Role::create(request(['role_name', 'role_status','Auth::user()->id']));
+        return view('roles.index', compact(['roles']));
     }
 
     /**

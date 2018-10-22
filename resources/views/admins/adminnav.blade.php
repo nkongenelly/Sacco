@@ -19,8 +19,8 @@
                     Roles
                 </a>
                 <div class="dropdown-menu" aria-labelledby="rolesDropdownMenu">
-                    <a class="dropdown-item" href="#">Add Role</a>
-                    <a class="dropdown-item" href="">View & Manage roles</a>
+                    <a class="dropdown-item" href="/role/create">Add Role</a>
+                    <a class="dropdown-item" href="#">View & Manage roles</a>
                 </div>
             </li>
             <li class="nav-item active dropdown">

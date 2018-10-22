@@ -23,4 +23,8 @@ Route::patch('/usersdelete/{userId}', 'UserController@destroy');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/users', 'UserController@index');
+
+//role routes
+Route::get('/roles', 'RoleController@index');
+Route::get('/role/create', 'RoleController@create');
+Route::post('/roles', 'RoleController@store');
