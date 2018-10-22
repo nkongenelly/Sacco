@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateSavingsTable extends Migration
+class CreateMemberDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,20 @@ class CreateSavingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('savings', function (Blueprint $table) {
+        Schema::create('member_documents', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('document_name', 50)->nullable();
             $table->integer('member_id');
-            $table->integer('saving_type_id');
-            $table->double('saving_amount');
-            $table->date('saving_date');
-            $table->integer('deleted')->default(0);
-            $table->timestamp('deleted_on');
-            $table->integer('deleted_by')->nullable();
+            $table->integer('document_type_id');
+
             $table->integer('created_by')->nullable();
+            $table->integer('deleted')->default(0);
+            $table->timestamp('deleted_on')->nullable();
+            $table->integer('deleted_by')->nullable();
             $table->timestamps();
         });
+
+
     }
 
     /**
@@ -34,6 +36,6 @@ class CreateSavingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('savings');
+        Schema::dropIfExists('member_documents');
     }
 }

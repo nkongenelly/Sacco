@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateSavingTypesTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,23 @@ class CreateSavingTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('saving_types', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('savings_type_name', 255);
+            $table->string('role_name', 55);
             $table->integer('deleted')->default(0);
             $table->timestamp('deleted_on')->nullable();
             $table->integer('deleted_by')->nullable();;
             $table->integer('created_by')->nullable();;
             $table->timestamps();
-        });
-        DB::table('saving_types')->insert(array(
-            ['savings_type_name' => 'Shared Capital'],
-            ['savings_type_name' => 'Share Contribution'],
-            ['savings_type_name' => 'Withdrawals'],
+            });
 
-        ));
+            DB::table('roles')->insert(
+            array(
+            ['role_name' => 'Admin'],
+            ['role_name' => 'Official']
+    
+            )
+            );
     }
 
     /**
@@ -37,6 +39,6 @@ class CreateSavingTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('saving_types');
+        Schema::dropIfExists('roles');
     }
 }

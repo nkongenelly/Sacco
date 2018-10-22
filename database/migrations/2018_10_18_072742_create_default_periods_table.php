@@ -14,12 +14,12 @@ class CreateDefaultPeriodsTable extends Migration
     public function up()
     {
         Schema::create('default_periods', function (Blueprint $table) {
-            $table->increments('id',11);
-            $table->string('default_period',50);
-            $table->string('deleted',11)->default(0);
+            $table->increments('id');
+            $table->string('default_period', 50);
+            $table->tinyInteger('deleted')->default(0);
             $table->timestamp('deleted_on')->nullable();
-            $table->string('deleted_by',11)->nullable();
-            $table->string('created_by',11)->nullable();
+            $table->integer('deleted_by')->nullable();
+            $table->integer('created_by')->nullable();
             $table->timestamps();
         });
         DB::table('default_periods')->insert(array(
