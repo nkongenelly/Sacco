@@ -10,8 +10,8 @@
                     Users
                 </a>
                 <div class="dropdown-menu" aria-labelledby="usersDropdownMenu">
-                    <a class="dropdown-item" href="#">Add User</a>
-                    <a class="dropdown-item" href="/users">View & Manage users</a>
+                    <a class="dropdown-item" href="/adduser">Add User</a>
+                    <a class="dropdown-item" href="#">View & Manage users</a>
                 </div>
             </li>
             <li class="nav-item active dropdown">
@@ -35,7 +35,7 @@
             <li class="nav-item active dropdown">
                 <a class="nav-link" href="#">Loggedin Users</a>
             </li>
-            <ul class="navbar-nav ml-auto">
+            <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @guest
                 <div class="alert alert-danger" role="alert">

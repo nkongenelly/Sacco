@@ -14,7 +14,8 @@
 // Route::get('/', function () {
 //     return view('layouts.master');
 // });
-
+Route::get('/adduser', 'UserController@index');
+Route::post('/adduser', 'UserController@store');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
