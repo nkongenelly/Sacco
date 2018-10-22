@@ -56,6 +56,12 @@ In your terminal change directory to the root of your project
 cd c:\directory\project_folder
 ```
 
+Install PHP Dependancies
+
+```
+composer install
+```
+
 Migrate your database
 
 ```
