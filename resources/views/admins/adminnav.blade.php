@@ -11,7 +11,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="usersDropdownMenu">
                     <a class="dropdown-item" href="#">Add User</a>
-                    <a class="dropdown-item" href="#">View & Manage users</a>
+                    <a class="dropdown-item" href="/users">View & Manage users</a>
                 </div>
             </li>
             <li class="nav-item active dropdown">
