@@ -40,9 +40,8 @@ class UserController extends Controller
         $this->validate(request(), [
             'user_first_name' => 'required',
             'user_last_name' => 'required',
-            'email' => 'required',
+            'email' => 'unique:users,email',
         ]);
-
         // $password = Hash::make($request->password);
         $generatedPassword = (date('s') + date('i')) . '&' . date('i') . 'Za' . (date('H') + date('i'));
 
