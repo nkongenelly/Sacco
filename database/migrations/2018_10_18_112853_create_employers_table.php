@@ -15,17 +15,10 @@ class CreateEmployersTable extends Migration
     {
         Schema::create('employers', function (Blueprint $table) {
             $table->increments('id');
-<<<<<<< HEAD
-            $table->string('employer_name', 50);
-            $table->string('employer_email', 50)->nullable();
-            $table->string('employer_phone_number', 50)->nullable();
-            $table->string('employer_postal_address')->nullable();
-=======
             $table->string('employer_name',50);
             $table->string('employer_email',50)->nullable();
             $table->string('employer_phone_number',50)->nullable();
             $table->string('employer_postal_address',50)->nullable();
->>>>>>> 81fab469551d4e37018e54556e08bbb840e1e7d5
             $table->integer('deleted')->default(0);
             $table->timestamp('deleted_on')->nullable();
             $table->integer('deleted_by')->nullable();
