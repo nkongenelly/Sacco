@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -23,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admins.createuser');
     }
 
     /**
@@ -34,7 +37,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'user_first_name' => 'required',
+            'user_last_name' => 'required',
+            'email' => 'unique:users,email',
+        ]);
+        // $password = Hash::make($request->password);
+        $generatedPassword = (date('s') + date('i')) . '&' . date('i') . 'Za' . (date('H') + date('i'));
+
+        User::create([
+            'user_first_name' => $request->user_first_name, 'user_last_name' => $request->user_last_name, 'email' => $request->email, 'password' => Hash::make($generatedPassword), 'user_status' => 1, 'deleted' => 0, 'created_by' => Auth::user()->id,
+        ]);
+
+        return redirect('/adduser');
     }
 
     /**
