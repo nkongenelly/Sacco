@@ -13,14 +13,13 @@
         <div class="form-group col-md-6">
             <label for="rolestatus"> Role Status</label>
             <select name="role_status" class="form-control" value="{{$role->role_status}}">
-                <option value="">Select role status</option>
                 <option value="1">Active</option>
                 <option value="0">InActive</option>
             </select>
         </div>
         <div class="form-group col-md-6">
+            <a class="btn btn-warning sm" href="/roles">Back</a>
             <button class="btn btn-primary sm" type="submit">Update</button>
-            <a class="btn btn-primary sm" href="/roles">Back</a>
         </div>
     </form>
 </div>

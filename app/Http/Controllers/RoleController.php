@@ -27,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.createRole');
+        return view('roles.create');
     }
 
     /**
@@ -85,6 +85,10 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate(request(),[
+            'role_name' => 'required',
+            'role_status' =>'required'
+        ]);
         Role::where('id', $id)
         ->update(request(['role_name', 'role_status']));
         return redirect('/roles');
