@@ -20,6 +20,7 @@ Route::get('/users', 'UserController@index');
 Route::get('/users/edit/{userId}', 'UserController@edit');
 Route::patch('/users/{userId}', 'UserController@update');
 Route::patch('/usersdelete/{userId}', 'UserController@destroy');
+Route::get('/loggedusers', 'UserController@loggedUser');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
