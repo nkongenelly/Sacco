@@ -48,7 +48,7 @@
          Not deleted
          @endif
       </td>
-      <td>{{ $user->deleted_on->toFormattedDateString() }}</td>
+      <td>{{ $user->deleted_on }}</td>
       <td>
          @foreach($users as $item)
          @if($item->id==$user->deleted_by)
