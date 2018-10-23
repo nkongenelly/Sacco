@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Role;
 use App\User;
-
+use Auth;
 class RoleController extends Controller
 {
     /**
@@ -43,8 +43,14 @@ class RoleController extends Controller
             'role_status' =>'required'
 
         ]);
+       
+        Role::create([
+            'role_name'=> $request->role_name,
+            'role_status'=> $request->role_status,
+            'created_by'=>Auth::user()->id,
+        ]);
         $roles = Role::all();
-        Role::create(request(['role_name', 'role_status','Auth::user()->id']));
+        // Role::create(request(['role_name', 'role_status','Auth::user()->id']));
         return view('roles.index', compact(['roles']));
     }
 

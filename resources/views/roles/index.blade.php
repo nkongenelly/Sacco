@@ -14,7 +14,7 @@
             <th>Deleted on</th>
             <th>Created by</th>
             <th>Created at</th>
-            <th colspan="2">Action</th>
+            <th colspan="2">Actions</th>
 
         </tr>
         @foreach($roles as $role)
@@ -22,10 +22,10 @@
             <td>{{$role->id}}</td>
             <td>{{$role->role_name}}</td>
             @if($role->role_status == 0)
-                <td style="color:green;">InActive</td>
+                <td style="color:red;">InActive</td>
             @endif
             @if($role->role_status == 1)
-                <td style="color:red;">Active</td>
+                <td style="color:green;">Active</td>
             @endif
             @if($role->deleted == 0)
                 <td style="color:green;">Not Deleted</td>
@@ -39,14 +39,17 @@
             @if($role->deleted_on == NULL || "")
                 <td>-</td>
             @endif
-            <td>{{$role->created_by}}</td>
+            <td>{{Auth::user()->user_first_name}}</td>
             @if($role->created_at == NULL || "")
                 <td>-</td>
             @endif
             @if($role->created_at != NULL)
                 <td>{{$role->created_at}}</td>
             @endif
-            <td><button>Edit</button></td>
+            <td>
+                <button class="btn btn-success">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+            </td>
         </tr>
         @endforeach
     </table>
