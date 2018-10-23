@@ -2,7 +2,7 @@
 
 @extends('layouts.master')
 @section('content')
-<a href="/user/create"  class="btn btn-primary">create</a>
+<a href="/adduser"  class="btn btn-primary">create</a>
 <table class="table table-condensed table-striped table-bordered table-hover">
    <tr>
       <th>#</th>
