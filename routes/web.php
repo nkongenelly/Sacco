@@ -20,6 +20,7 @@ Route::get('/users', 'UserController@index');
 Route::get('/users/edit/{userId}', 'UserController@edit');
 Route::patch('/users/{userId}', 'UserController@update');
 Route::patch('/usersdelete/{userId}', 'UserController@destroy');
+Route::get('/loggedusers', 'UserController@loggedUser');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -27,4 +28,7 @@ Route::get('/', 'HomeController@index')->name('home');
 //role routes
 Route::get('/roles', 'RoleController@index');
 Route::get('/role/create', 'RoleController@create');
+Route::get('/roles/edit/{id}', 'RoleController@edit');
 Route::post('/roles', 'RoleController@store');
+Route::patch('/roles/{id}', 'RoleController@update');
+Route::patch('/roles/{id}', 'RoleController@destroy');
