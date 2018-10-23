@@ -47,7 +47,7 @@
                 <td>{{$role->created_at}}</td>
             @endif
             <td>
-                <button class="btn btn-success">Edit</button>
+                <a href="/roles/edit/{{$role->id}}" class="btn btn-success">Edit</a>
                 <button class="btn btn-danger">Delete</button>
             </td>
         </tr>

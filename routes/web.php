@@ -27,4 +27,6 @@ Route::get('/', 'HomeController@index')->name('home');
 //role routes
 Route::get('/roles', 'RoleController@index');
 Route::get('/role/create', 'RoleController@create');
+Route::get('/roles/edit/{id}', 'RoleController@edit');
 Route::post('/roles', 'RoleController@store');
+Route::patch('/roles/{id}', 'RoleController@update');
