@@ -22,7 +22,7 @@
       <td>{{ $user->user_last_name }} </td>
       <td>{{ $user->email }}</td>
       <td> @if( $user->user_status==1)
-         <font size="3" color="blue">Active</font>
+         <font size="3" color="green">Active</font>
          @else()
          <font size="3" color="red">InActive</font>
          @endif
@@ -48,7 +48,7 @@
          Not deleted
          @endif
       </td>
-      <td>{{ $user->deleted_on->toFormattedDateString() }}</td>
+      <td>{{ $user->deleted_on }}</td>
       <td>
          @foreach($users as $item)
          @if($item->id==$user->deleted_by)
