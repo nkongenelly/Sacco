@@ -28,3 +28,4 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/roles', 'RoleController@index');
 Route::get('/role/create', 'RoleController@create');
 Route::post('/roles', 'RoleController@store');
+Route::patch('/roles/{id}', 'RoleController@destroy');

@@ -94,8 +94,12 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        Role::where('id', $id)
+            ->update([
+                'deleted'=>1 , 'deleted_on'=>date('Y-m-d H:i:s'), 'deleted_by' => Auth::user()->id
+            ]);
+            return redirect('/roles');
     }
 }
