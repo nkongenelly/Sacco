@@ -27,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.createRole');
+        return view('roles.create');
     }
 
     /**
@@ -50,7 +50,6 @@ class RoleController extends Controller
             'created_by'=>Auth::user()->id,
         ]);
         $roles = Role::all();
-        // Role::create(request(['role_name', 'role_status','Auth::user()->id']));
         return view('roles.index', compact(['roles']));
     }
 
@@ -73,7 +72,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::find($id);
+        return view('roles.edit', compact('role'));
     }
 
     /**
@@ -85,7 +85,13 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(request(),[
+            'role_name' => 'required',
+            'role_status' =>'required'
+        ]);
+        Role::where('id', $id)
+        ->update(request(['role_name', 'role_status']));
+        return redirect('/roles');
     }
 
     /**

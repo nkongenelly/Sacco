@@ -77,9 +77,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome to Kisborana Sacco system
+                    Welcome to Kisborana Sacco System
                 </div>
-                <a class="btn btn-info btn-lg" href="{{ route('login') }}">Login</a>
+                <a class="btn btn-danger btn-lg" href="{{ route('login') }}">Login</a>
 
                
             </div>

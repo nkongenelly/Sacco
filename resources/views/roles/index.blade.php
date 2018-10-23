@@ -58,6 +58,7 @@
                 @if(($role->role_name == 'Admin') || ($role->role_name == 'Official'))
                 <button class="btn btn-danger" style="cursor:not-allowed;" disabled>Delete</button>
                 @else()
+                <a href="/roles/edit/{{$role->id}}" class="btn btn-success">Edit</a>
                 <button class="btn btn-danger">Delete</button>
                 @endif
                 </form>
