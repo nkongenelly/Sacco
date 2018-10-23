@@ -33,7 +33,7 @@
                 </div>
             </li>
             <li class="nav-item active dropdown">
-                <a class="nav-link" href="#">Loggedin Users</a>
+                <a class="nav-link" href="/loggedusers">Loggedin Users</a>
             </li>
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
