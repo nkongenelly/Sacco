@@ -30,6 +30,7 @@ Route::get('/roles', 'RoleController@index');
 Route::get('/role/create', 'RoleController@create');
 Route::get('/roles/edit/{id}', 'RoleController@edit');
 Route::post('/roles', 'RoleController@store');
+Route::post('/userrole/{id}', 'RoleController@storeUserRole');
 Route::patch('/roles/{id}', 'RoleController@update');
 Route::patch('/roles/{id}', 'RoleController@destroy');
 

@@ -32,6 +32,15 @@ class RoleController extends Controller
     {
         return view('roles.create');
     }
+    public function storeUserRole(Request $request, $id)
+    {
+
+        $role = $request->userrole;
+        // $user = User::find($id);
+        // $user->roles->attach($role);
+        dd($role);
+        // return redirect('/roles');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -41,16 +50,16 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(),[
+        $this->validate(request(), [
             'role_name' => 'required',
-            'role_status' =>'required'
+            'role_status' => 'required'
 
         ]);
-       
+
         Role::create([
-            'role_name'=> $request->role_name,
-            'role_status'=> $request->role_status,
-            'created_by'=>Auth::user()->id,
+            'role_name' => $request->role_name,
+            'role_status' => $request->role_status,
+            'created_by' => Auth::user()->id,
         ]);
         $roles = Role::all();
         return view('roles.index', compact(['roles']));
@@ -88,12 +97,12 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate(request(),[
+        $this->validate(request(), [
             'role_name' => 'required',
-            'role_status' =>'required'
+            'role_status' => 'required'
         ]);
         Role::where('id', $id)
-        ->update(request(['role_name', 'role_status']));
+            ->update(request(['role_name', 'role_status']));
         return redirect('/roles');
     }
 
@@ -107,8 +116,8 @@ class RoleController extends Controller
     {
         Role::where('id', $id)
             ->update([
-                'deleted'=>1 , 'deleted_on'=>date('Y-m-d H:i:s'), 'deleted_by' => Auth::user()->id
+                'deleted' => 1, 'deleted_on' => date('Y-m-d H:i:s'), 'deleted_by' => Auth::user()->id
             ]);
-            return redirect('/roles');
+        return redirect('/roles');
     }
 }

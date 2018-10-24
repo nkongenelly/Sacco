@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,10 +17,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
 
+        $roles = Role::all();
         $users = User::all();
-        return view("admins.index", compact('users'));
+        return view("admins.index", compact(['users', 'roles']));
 
     }
 
@@ -118,7 +119,8 @@ class UserController extends Controller
 
         return redirect('/users');
     }
-    public function loggedUser(){
+    public function loggedUser()
+    {
         return view('admin.loggedusers');
     }
 }
