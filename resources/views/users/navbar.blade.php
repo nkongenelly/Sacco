@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Kisborana Sacco</a>
+    <a class="navbar-brand" href="#">Kisborana Sacco</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,35 +7,60 @@
         <ul class="navbar-nav">
             <li class="nav-item active dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="usersDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Users
+                    Members
                 </a>
                 <div class="dropdown-menu" aria-labelledby="usersDropdownMenu">
-                    <a class="dropdown-item" href="/adduser">Add User</a>
-                    <a class="dropdown-item" href="/users">View & Manage users</a>
+                    <a class="dropdown-item" href="#">Member Registration</a>
+                    <a class="dropdown-item" href="#">View Members</a>
+                    <a class="dropdown-item" href="#">Update Member Details</a>
                 </div>
             </li>
             <li class="nav-item active dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="rolesDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Roles
+                    Loans
                 </a>
                 <div class="dropdown-menu" aria-labelledby="rolesDropdownMenu">
-                    <a class="dropdown-item" href="/role/create">Add Role</a>
-                    <a class="dropdown-item" href="/roles">View & Manage roles</a>
+                <a class="dropdown-item" href="#">Loan Application</a>  
+                <a class="dropdown-item" href="#">Loan Disbursements</a>
+                <a class="dropdown-item" href="#">Loan Amortization</a>
+                <a class="dropdown-item" href="#">Loan Deduction Schedule</a>
+                <a class="dropdown-item" href="#">Loan Payment</a>
+                </div>
+            </li>
+
+            <li class="nav-item active dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="rolesDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Savings
+                </a>
+                <div class="dropdown-menu" aria-labelledby="rolesDropdownMenu">
+                <a class="dropdown-item" href="#">View Savings</a>  
+                <a class="dropdown-item" href="#">Create/Upload Savings</a>
+                <a class="dropdown-item" href="#">Upload Savings</a>
+                <a class="dropdown-item" href="#">Transfer Savings</a>
                 </div>
             </li>
             <li class="nav-item active dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="reportsDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Users
+                    Expenses
                 </a>
                 <div class="dropdown-menu" aria-labelledby="reportsDropdownMenu">
-                    <a class="dropdown-item" href="#">Users Reports</a>
-                    <a class="dropdown-item" href="#">View users Login history</a>
+                    <a class="dropdown-item" href="#">Capture Expenses</a>
+                    <a class="dropdown-item" href="#">Define Expense Type</a>
                 </div>
             </li>
+            
             <li class="nav-item active dropdown">
-                <a class="nav-link" href="/loggedusers">Loggedin Users</a>
+                <a class="nav-link dropdown-toggle" href="#" id="reportsDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Employers
+                </a>
+                <div class="dropdown-menu" aria-labelledby="reportsDropdownMenu">
+                    <a class="dropdown-item" href="#">Create Employer</a>
+                    <a class="dropdown-item" href="#">Update Details</a>
+                    <a class="dropdown-item" href="#">View & Manage Employer</a>
+                </div>
             </li>
-            <ul class="nav navbar-nav navbar-right">
+            
+            <ul class="nav navbar-nav mr-sm-2 justify-content-end">
                 <!-- Authentication Links -->
                 @guest
                 <div class="alert alert-danger" role="alert">
@@ -44,7 +69,7 @@
                 @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <i class="fa fa-cogs"></i>
+                    <i class="fa fa-cogs"></i>
                         {{ Auth::user()->user_first_name }} <span class="caret"></span>
                     </a>
 
