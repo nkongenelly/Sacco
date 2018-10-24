@@ -14,23 +14,22 @@
 // Route::get('/', function () {
 //     return view('layouts.master');
 // });
+
+//user routes
 Route::get('/adduser', 'UserController@create');
 Route::post('/adduser', 'UserController@store');
 Route::get('/users', 'UserController@index');
 Route::get('/users/edit/{userId}', 'UserController@edit');
 Route::patch('/users/{userId}', 'UserController@update');
 Route::patch('/usersdelete/{userId}', 'UserController@destroy');
-<<<<<<< HEAD
-Route::patch('/assignRole/{userId}', 'UserController@assignRole');
+Route::get('/loggedusers', 'UserController@loggedUser');
 
-
+//next of kin
 Route::get('/nextofkin', 'NextofKinController@index');
 Route::get('/nextOfKin/edit/{nextofkinId}', 'NextofKinController@edit');
-Route::patch('/nextofkin/{nextofkinId}', 'NextofKinController@update');
+Route::patch('/nextofkin/{nextofkinId}', 'UserController@update');
 
-=======
-Route::get('/loggedusers', 'UserController@loggedUser');
->>>>>>> 0a17da911bda79f5dc035a7195175755a25a037e
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -43,3 +42,4 @@ Route::post('/roles', 'RoleController@store');
 Route::post('/userrole/{id}', 'RoleController@storeUserRole');
 Route::patch('/roles/{id}', 'RoleController@update');
 Route::patch('/roles/{id}', 'RoleController@destroy');
+
