@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -21,6 +22,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('layouts.master');
-    }
+    //    $roles =  Auth::user()->roles()->get();
+       
+    //    dd($roles);
+        
+    //     switch (Auth::user()->roles()->role_name) {
+    //         case '1':
+    //             return View('layouts.navbar');
+    //             break;
+
+    //         case '2':
+    //             return View('layouts.navbar');
+    //             break;
+
+    //             default:
+    //              return View('layouts.master');
+    //             break;
+        
+    // }
+    return view('layouts.master');
+}
 }

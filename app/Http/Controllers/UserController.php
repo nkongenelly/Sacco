@@ -53,7 +53,7 @@ class UserController extends Controller
             'user_first_name' => $request->user_first_name, 'user_last_name' => $request->user_last_name, 'email' => $request->email, 'password' => Hash::make($generatedPassword), 'user_status' => 1, 'deleted' => 0, 'created_by' => Auth::user()->id,
         ]);
 
-        return redirect('/adduser');
+        return redirect('/users');
     }
 
     /**
@@ -117,5 +117,13 @@ class UserController extends Controller
         User::where('id', $id)->update(['deleted'=> 1, 'deleted_on'=>date('Y-m-d H-i-s'), 'deleted_by'=> Auth::user()->id]);
 
         return redirect('/users');
+    }
+
+    public function assignRole($id){
+
+        $users = User::all();
+        $roles =Role::all();
+        
+        return view('admins.assignRoles', compact('users' , 'roles'));
     }
 }

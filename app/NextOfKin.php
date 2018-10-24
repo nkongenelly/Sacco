@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Member;
 
 
-class Next_of_kin extends Model
+class NextOfKin extends Model
 {
     //
     protected $guarded = [];
