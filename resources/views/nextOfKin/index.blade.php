@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.official')
 @section('content')
 <table class="table table-condensed table-striped table-bordered table-hover">
    <tr>

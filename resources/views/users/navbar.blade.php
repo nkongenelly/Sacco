@@ -13,6 +13,8 @@
                     <a class="dropdown-item" href="#">Member Registration</a>
                     <a class="dropdown-item" href="#">View Members</a>
                     <a class="dropdown-item" href="#">Update Member Details</a>
+                    <a class="dropdown-item" href="/nextofkin">Next of Kin</a>
+
                 </div>
             </li>
             <li class="nav-item active dropdown">
