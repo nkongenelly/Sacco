@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\User;
 use Auth;
+
 class RoleController extends Controller
 {
     /**
@@ -27,7 +28,16 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.createRole');
+        return view('roles.create');
+    }
+    public function storeUserRole(Request $request, $id)
+    {
+
+        $role = $request->userrole;
+        // $user = User::find($id);
+        // $user->roles->attach($role);
+        dd($role);
+        // return redirect('/roles');
     }
 
     /**
@@ -38,19 +48,18 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(),[
+        $this->validate(request(), [
             'role_name' => 'required',
-            'role_status' =>'required'
+            'role_status' => 'required'
 
         ]);
-       
+
         Role::create([
-            'role_name'=> $request->role_name,
-            'role_status'=> $request->role_status,
-            'created_by'=>Auth::user()->id,
+            'role_name' => $request->role_name,
+            'role_status' => $request->role_status,
+            'created_by' => Auth::user()->id,
         ]);
         $roles = Role::all();
-        // Role::create(request(['role_name', 'role_status','Auth::user()->id']));
         return view('roles.index', compact(['roles']));
     }
 
@@ -73,7 +82,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::find($id);
+        return view('roles.edit', compact('role'));
     }
 
     /**
@@ -85,7 +95,13 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(request(), [
+            'role_name' => 'required',
+            'role_status' => 'required'
+        ]);
+        Role::where('id', $id)
+            ->update(request(['role_name', 'role_status']));
+        return redirect('/roles');
     }
 
     /**
@@ -94,8 +110,12 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        Role::where('id', $id)
+            ->update([
+                'deleted' => 1, 'deleted_on' => date('Y-m-d H:i:s'), 'deleted_by' => Auth::user()->id
+            ]);
+        return redirect('/roles');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,10 +17,10 @@ class UserController extends Controller
      */
     public function index()
     {
-         //
-         
-         $users=User::all();
-         return view("admins.index" , compact('users'));
+
+        $roles = Role::all();
+        $users = User::all();
+        return view("admins.index", compact(['users', 'roles']));
 
     }
 
@@ -76,7 +77,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $users=User::find($id);
+        $users = User::find($id);
 
         return view('admins.edit', compact('users'));
     }
@@ -91,15 +92,15 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate(request(),[
-            'user_first_name'=>'required',
-            'user_last_name'=>'required',
-            'email'=>'required',
-            'user_status'=>'required',
+        $this->validate(request(), [
+            'user_first_name' => 'required',
+            'user_last_name' => 'required',
+            'email' => 'required',
+            'user_status' => 'required',
         ]);
         //posting to database
-           
-        User::where('id', $id)->update(request(['user_first_name','user_last_name',  'email', 'user_status']));
+
+        User::where('id', $id)->update(request(['user_first_name', 'user_last_name', 'email', 'user_status']));
 
         return redirect('/users');
     }
@@ -114,16 +115,12 @@ class UserController extends Controller
     {
         //
 
-        User::where('id', $id)->update(['deleted'=> 1, 'deleted_on'=>date('Y-m-d H-i-s'), 'deleted_by'=> Auth::user()->id]);
+        User::where('id', $id)->update(['deleted' => 1, 'deleted_on' => date('Y-m-d H-i-s'), 'deleted_by' => Auth::user()->id]);
 
         return redirect('/users');
     }
-
-    public function assignRole($id){
-
-        $users = User::all();
-        $roles =Role::all();
-        
-        return view('admins.assignRoles', compact('users' , 'roles'));
+    public function loggedUser()
+    {
+        return view('admin.loggedusers');
     }
 }

@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\User;
-class Expense_amount extends Model
+use Illuminate\Database\Eloquent\Model;
+
+class ExpenseAmount extends Model
 {
     //
     protected $guarded = [];

@@ -35,20 +35,32 @@
             @endif
             @if($role->deleted_by == NULL || "")
                 <td>-</td>
+            @else()
+            <td>{{Auth::user()->user_first_name}}</td>
             @endif
             @if($role->deleted_on == NULL || "")
                 <td>-</td>
+            @else()
+            <td>{{$role->deleted_on}}</td>
             @endif
             <td>{{Auth::user()->user_first_name}}</td>
             @if($role->created_at == NULL || "")
                 <td>-</td>
             @endif
             @if($role->created_at != NULL)
-                <td>{{$role->created_at}}</td>
+                <td>{{$role->created_at->toFormattedDateString()}}</td>
             @endif
             <td>
-                <button class="btn btn-success">Edit</button>
+                <form action="/roles/{{$role->id}}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('PATCH') }}
+                <a href="/roles/edit/{{$role->id}}" class="btn btn-success">Edit</a>
+                @if(($role->role_name == 'Admin') || ($role->role_name == 'Official'))
+                <button class="btn btn-danger" style="cursor:not-allowed;" disabled>Delete</button>
+                @else()
                 <button class="btn btn-danger">Delete</button>
+                @endif
+                </form>
             </td>
         </tr>
         @endforeach

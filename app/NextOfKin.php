@@ -2,11 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Member;
+use Illuminate\Database\Eloquent\Model;
 
-
-class NextOfKin extends Model
+Class NextOfKin extends Model
 {
     //
     protected $guarded = [];

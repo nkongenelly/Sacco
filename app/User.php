@@ -29,6 +29,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\UserRole');
     }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)
+            ->withTimestamps();
+    }
 
     public function userLoginSessions()
     {

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<a href="/user/create"  class="btn btn-primary">create</a>
+<a href="/adduser"  class="btn btn-primary">create</a>
 <table class="table table-condensed table-striped table-bordered table-hover">
    <tr>
       <th>#</th>
@@ -8,6 +8,7 @@
       <th>Last name</th>
       <th>Email</th>
       <th>User Status</th>
+      <th>Role</th>
       <th>created at</th>
       <th>Updated at</th>
       <th>deleted</th>
@@ -21,12 +22,18 @@
       <td>{{ $user->user_first_name }} </td>
       <td>{{ $user->user_last_name }} </td>
       <td>{{ $user->email }}</td>
+<<<<<<< HEAD
       <td> @if( $user->user_status==1 || $user->deleted !==0 )
          <font size="3" color="blue">Active</font>
+=======
+      <td> @if( $user->user_status==1)
+         <font size="3" color="green">Active</font>
+>>>>>>> 0a17da911bda79f5dc035a7195175755a25a037e
          @else()
          <font size="3" color="red">InActive</font>
          @endif
       </td>
+      <td>-</td>
       <td>
          @if($user->created_at)
          {{ $user->created_at->toFormattedDateString() }}
@@ -48,13 +55,7 @@
          ___
          @endif
       </td>
-      <td>
-      @if($user->deleted_on != null)
-      {{ $user->deleted_on }}
-      @else
-      ___
-      @endif
-      </td>
+      <td>{{ $user->deleted_on }}</td>
       <td>
          @foreach($users as $item)
          @if($item->id==$user->deleted_by)
@@ -64,8 +65,45 @@
          @endif
          @endforeach
       </td>
-      @if(Auth::user()->id != $user->id)
-      <td><a href="/assignRole/{{$user->id}}" class="btn btn-sm btn-success">Asign role</a></td>
+      <td><!-- Button trigger modal -->
+        
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#assignRoleModal">
+            Asign role
+        </button></td>
+      
+        
+
+        <!-- Modal -->
+        <div class="modal fade" id="assignRoleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choose a Role</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/userrole/{{$user->id}}" method="POST">
+                    <div class="form-group">
+                      <label for="userrole">Choose a Role</label>
+                      <select name="userrole" id="">
+                          <option value="">Select a Role</option>
+                          @foreach($roles as $role)
+                             <option value={{$role->id}}>{{$role->role_name}}</option>
+                          @endforeach
+                      </select>
+                     
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary">Assign role</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
       <td><a href ="/users/edit/{{$user->id}}" class="btn btn-sm btn-primary">edit</a></td>
       <td>
          <form action="/usersdelete/{{$user->id}}" method="post" onsubmit()="are you sure you want to delete">
