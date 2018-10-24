@@ -2,11 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Loan;
 use App\Member;
+use Illuminate\Database\Eloquent\Model;
 
-class Loan_guarantor extends Model
+class LoanGuarantor extends Model
 {
     //
     protected $guarded = [];

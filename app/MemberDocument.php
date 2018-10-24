@@ -2,11 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Member;
-use App\Document_type;
+use App\MemberDocumentType;
+use Illuminate\Database\Eloquent\Model;
 
-class Member_document extends Model
+class MemberDocument extends Model
 {
     //
     protected $guarded = [];
@@ -18,6 +18,6 @@ class Member_document extends Model
 
     public function documentTypes()
     {
-        return $this ->hasMany(Document_type::class);
+        return $this->hasMany(MemberDocumentType::class);
     }
 }
