@@ -8,6 +8,7 @@
       <th>Last name</th>
       <th>Email</th>
       <th>User Status</th>
+      <th>Role</th>
       <th>created at</th>
       <th>Updated at</th>
       <th>deleted</th>
@@ -27,6 +28,7 @@
          <font size="3" color="red">InActive</font>
          @endif
       </td>
+      <td>-</td>
       <td>
          @if($user->created_at)
          {{ $user->created_at->toFormattedDateString() }}
@@ -56,7 +58,45 @@
          @endif
          @endforeach
       </td>
-      <td><a href="/" class="btn btn-sm btn-success">Asign role</a></td>
+      <td><!-- Button trigger modal -->
+        
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#assignRoleModal">
+            Asign role
+        </button></td>
+      
+        
+
+        <!-- Modal -->
+        <div class="modal fade" id="assignRoleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choose a Role</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/userrole/{{$user->id}}" method="POST">
+                    <div class="form-group">
+                      <label for="userrole">Choose a Role</label>
+                      <select name="userrole" id="">
+                          <option value="">Select a Role</option>
+                          @foreach($roles as $role)
+                             <option value={{$role->id}}>{{$role->role_name}}</option>
+                          @endforeach
+                      </select>
+                     
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary">Assign role</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
       <td><a href ="/users/edit/{{$user->id}}" class="btn btn-sm btn-primary">edit</a></td>
       <td>
          @if(Auth::user()->id != $user->id)

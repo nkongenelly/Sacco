@@ -25,7 +25,7 @@
             </li>
             <li class="nav-item active dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="reportsDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Users
+                    Reports
                 </a>
                 <div class="dropdown-menu" aria-labelledby="reportsDropdownMenu">
                     <a class="dropdown-item" href="#">Users Reports</a>
