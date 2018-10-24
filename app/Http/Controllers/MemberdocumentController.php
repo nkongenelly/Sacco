@@ -3,6 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+ 
+use App\NextOfKin;
+
+use App\Member_document;
+
+use App\Member;
+
+use App\MemberDocumentType;
+
 
 class MemberDocumentController extends Controller
 {
@@ -21,9 +30,12 @@ class MemberDocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $memberdocumenttypes = MemberDocumentType::all();
+        $member = Member::find($id);
+        return view('memberDocuments.create', compact('member','memberdocumenttypes'));
+
     }
 
     /**
@@ -34,7 +46,14 @@ class MemberDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(),[
+            'document_name'=>'required'
+        ]);
+        Member_document::create(request([
+            'member_id',
+            'document_name',
+            'document_type_id',
+        ]));
     }
 
     /**

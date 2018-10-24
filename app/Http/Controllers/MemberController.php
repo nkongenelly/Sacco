@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Member;
+
 class MemberController extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $members = Member::all();
+        return view('nextOfKin.create', compact('members'));
     }
 
     /**
@@ -23,7 +26,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('members.create');
     }
 
     /**
@@ -34,7 +37,33 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'member_first_name' =>'required',
+            'member_last_name' =>'required',
+            'member_national_id' =>'required',
+            'member_email' =>'required',
+            'member_phone_number' =>'required',
+            'member_bank_account_number' =>'required',
+            'member_postal_address' =>'required',
+            'member_postal_code' =>'required',
+            'member_location' =>'required',
+            'member_number' =>'required',
+            'member_payroll_number' =>'required'
+        ]);
+        Member::create(request(['member_first_name',
+            'member_last_name',
+            'member_national_id',
+            'member_email',
+            'member_phone_number',
+            'member_bank_account_number',
+            'member_postal_address',
+            'member_postal_code',
+            'member_location',
+            'member_number',
+            'member_payroll_number'
+        ]));
+
+        return redirect('/roles');
     }
 
     /**

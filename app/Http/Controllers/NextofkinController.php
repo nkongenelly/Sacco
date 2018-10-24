@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Member;
+
+use Auth;
+
+use App\NextOfKin;
+
 class NextOfKinController extends Controller
 {
     /**
@@ -21,9 +27,10 @@ class NextOfKinController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $member = Member::find($id);
+        return view('nextOfKin.create', compact('member'));
     }
 
     /**
@@ -34,7 +41,22 @@ class NextOfKinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'next_of_kin_first_name' =>'required',
+            'next_of_kin_last_name' =>'required',
+            'next_of_kin_location' =>'required'
+        ]);
+        NextOfKin::create(request([
+            'member_id',
+            'next_of_kin_first_name',
+            'next_of_kin_last_name',
+            'next_of_kin_national_id',
+            'next_of_kin_email',
+            'next_of_kin_phone_number',
+            'next_of_kin_location',
+            'created_by'=>Auth::user()->id,
+        ]));
+        return redirect('/roles');
     }
 
     /**
