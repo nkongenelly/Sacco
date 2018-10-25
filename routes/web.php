@@ -37,6 +37,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/admins','HomeController@adminHome');
+
 //role routes
 Route::get('/roles', 'RoleController@index');
 Route::get('/role/create', 'RoleController@create');
@@ -61,3 +62,11 @@ Route::post('/documents', 'MemberdocumentController@store');
 Route::get('/documents/edit/{id}','MemberdocumentController@edit');
 Route::patch('/documents/{id}', 'MemberdocumentController@update');
 Route::get('/documents/delete/{id}','MemberdocumentController@destroy');
+// Savings routes
+Route::get('/savings', 'SavingController@index');
+Route::get('/savings/create', 'SavingController@create');
+Route::post('/savings', 'SavingController@store');
+Route::get('/savings/edit/{id}', 'SavingController@edit');
+Route::patch('/savings/{id}', 'SavingController@update');
+Route::get('/savings/delete/{id}', 'SavingController@destroy');
+
