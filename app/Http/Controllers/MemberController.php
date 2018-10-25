@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Member;
 
+use Auth;
+
 class MemberController extends Controller
 {
     /**
@@ -64,7 +66,7 @@ class MemberController extends Controller
             'member_payroll_number'
         ]));
 
-        return redirect('/roles');
+        return redirect('/members');
     }
 
     /**
@@ -87,6 +89,8 @@ class MemberController extends Controller
     public function edit($id)
     {
         //
+        $member = Member::find($id);
+        return view('members.edit', compact('member'));
     }
 
     /**
@@ -99,6 +103,33 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate(request(), [
+            'member_first_name' =>'required',
+            'member_last_name' =>'required',
+            'member_national_id' =>'required',
+            'member_email' =>'required',
+            'member_phone_number' =>'required',
+            'member_bank_account_number' =>'required',
+            'member_postal_address' =>'required',
+            'member_postal_code' =>'required',
+            'member_location' =>'required',
+            'member_number' =>'required',
+            'member_payroll_number' =>'required'
+        ]);
+        Member::where('id', $id)->update(request(['member_first_name',
+            'member_last_name',
+            'member_national_id',
+            'member_email',
+            'member_phone_number',
+            'member_bank_account_number',
+            'member_postal_address',
+            'member_postal_code',
+            'member_location',
+            'member_number',
+            'member_payroll_number'
+        ]));
+
+        return redirect('/members');
     }
 
     /**
@@ -110,5 +141,9 @@ class MemberController extends Controller
     public function destroy($id)
     {
         //
+        Member::where('id', $id)->update([
+            'deleted' => 1, 'deleted_on' => date('Y-m-d H:i:s'), 'deleted_by' => Auth::user()->id
+        ]);
+        return redirect('/members');
     }
 }

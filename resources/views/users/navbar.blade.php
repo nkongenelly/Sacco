@@ -10,9 +10,9 @@
                     Members
                 </a>
                 <div class="dropdown-menu" aria-labelledby="usersDropdownMenu">
-                    <a class="dropdown-item" href="#">Member Registration</a>
-                    <a class="dropdown-item" href="#">View Members</a>
-                    <a class="dropdown-item" href="#">Update Member Details</a>
+                    <a class="dropdown-item" href="/members/create">Member Registration</a>
+                    <a class="dropdown-item" href="/members">View Members</a>
+                    <a class="dropdown-item" href="/documents">Member Documents</a>
                     <a class="dropdown-item" href="/nextofkin">Next of Kin</a>
 
                 </div>

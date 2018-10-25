@@ -58,7 +58,7 @@ class NextofKinController extends Controller
             'next_of_kin_location',
             'created_by'=>Auth::user()->id,
         ]));
-        return redirect('/roles');
+        return redirect('/nextofkin');
     }
 
     /**
@@ -81,9 +81,9 @@ class NextofKinController extends Controller
     public function edit($id)
     {
         //
-        $nextOfKins = NextofKin::find($id);
+        $nextOfKin = NextofKin::find($id);
 
-        return view('nextOfKin.edit', compact('nextOfKins'));
+        return view('nextOfKin.edit', compact('nextOfKin'));
     }
 
     /**
@@ -95,18 +95,20 @@ class NextofKinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $this->validate(request(),[
             'next_of_kin_first_name'=>'required',
             'next_of_kin_last_name'=>'required',
-            'next_of_kin_phone_number'=>'required',
-            'next_of_kin_national_id'=>'required',
-            'next_of_kin_email'=>'required',
-            'next_of_kin_status'=>'required',
+         
         ]);
 
-        NextofKin::where('id',$id)->update(request(['next_of_kin_first_name','next_of_kin_last_name','next_of_kin_phone_number','next_of_kin_national_id','next_of_kin_email','next_of_kin_status']));
-
+        NextofKin::where('id', $id)->update(request([
+            'next_of_kin_first_name',
+            'next_of_kin_last_name',
+            'next_of_kin_national_id',
+            'next_of_kin_email',
+            'next_of_kin_phone_number',
+            'next_of_kin_location',
+        ]));
         return redirect('/nextofkin');
     }
 
@@ -119,5 +121,9 @@ class NextofKinController extends Controller
     public function destroy($id)
     {
         //
+        NextofKin::where('id', $id) ->update([
+            'deleted' => 1, 'deleted_on' => date('Y-m-d H:i:s'), 'deleted_by' => Auth::user()->id
+        ]);
+        return redirect('/nextofkin');
     }
 }
