@@ -8,11 +8,7 @@
       <th>Loggin Status</th>
       <th colspan="4">Actions</th>
    </tr>
-           @foreach ($users as $user) 
-                        <tr>  
-                            <td>{{$user->email}} </td>
-                        </tr>
-            @endforeach
+           
 
 
 @endesction
