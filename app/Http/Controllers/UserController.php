@@ -123,6 +123,6 @@ class UserController extends Controller
     }
     public function loggedUser()
     {
-        return view('admin.loggedusers');
+        return view('admins.loggedusers');
     }
 }

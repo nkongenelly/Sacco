@@ -43,16 +43,3 @@ Route::post('/userrole/{id}', 'RoleController@storeUserRole');
 Route::patch('/roles/{id}', 'RoleController@update');
 Route::patch('/roles/{id}', 'RoleController@destroy');
 
-//members routes
-Route::get('/members', 'MemberController@index');
-Route::get('/members/create', 'MemberController@create');
-Route::post('/members', 'MemberController@store');
-
-//next of kin
-Route::get('/kins/create/{id}', 'NextofkinController@create');
-Route::post('/kin', 'NextofkinController@store');
-
-//member documents
-Route::get('/documents/create/{id}', 'MemberdocumentController@create');
-Route::post('/documents', 'MemberdocumentController@store');
-
