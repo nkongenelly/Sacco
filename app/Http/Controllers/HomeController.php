@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\UserRole;
+use App\User;
 use Auth;
+use Session;
+
 class HomeController extends Controller
 {
     /**
@@ -22,24 +25,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-    //    $roles =  Auth::user()->roles()->get();
-       
-    //    dd($roles);
-        
-    //     switch (Auth::user()->roles()->role_name) {
-    //         case '1':
-    //             return View('layouts.navbar');
-    //             break;
-
-    //         case '2':
-    //             return View('layouts.navbar');
-    //             break;
-
-    //             default:
-    //              return View('layouts.master');
-    //             break;
-        
-    // }
-    return view('layouts.master');
-}
+            // return view('layouts.master');
+             // User role
+        $role = Auth::user()->role; 
+    
+        // Check user role
+        switch ($role) {
+            case 'admin':
+                    return view('layouts.master');
+                break;
+            case 'official':
+                    return view('layouts.official');
+                break; 
+            default:
+                    return '/login'; 
+                break;
+        }
+    }
+    
 }

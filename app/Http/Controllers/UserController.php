@@ -7,6 +7,7 @@ use App\Role;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+// use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -48,10 +49,11 @@ class UserController extends Controller
             'email' => 'unique:users,email',
         ]);
         // $password = Hash::make($request->password);
-        $generatedPassword = (date('s') + date('i')) . '&' . date('i') . 'Za' . (date('H') + date('i'));
+        $generatedPassword = 'official';
 
         User::create([
             'user_first_name' => $request->user_first_name, 'user_last_name' => $request->user_last_name, 'email' => $request->email, 'password' => Hash::make($generatedPassword), 'user_status' => 1, 'deleted' => 0, 'created_by' => Auth::user()->id,
+            'role' => 'official',
         ]);
 
         return redirect('/users');

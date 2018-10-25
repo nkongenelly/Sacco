@@ -22,13 +22,8 @@
       <td>{{ $user->user_first_name }} </td>
       <td>{{ $user->user_last_name }} </td>
       <td>{{ $user->email }}</td>
-<<<<<<< HEAD
-      <td> @if( $user->user_status==1 || $user->deleted !==0 )
-         <font size="3" color="blue">Active</font>
-=======
-      <td> @if( $user->user_status==1)
+      <td> @if( $user->user_status== 1 || $user->deleted_by == 0)
          <font size="3" color="green">Active</font>
->>>>>>> 0a17da911bda79f5dc035a7195175755a25a037e
          @else()
          <font size="3" color="red">InActive</font>
          @endif
@@ -65,6 +60,7 @@
          @endif
          @endforeach
       </td>
+      @if($user->deleted_on ==0 || Auth::user()->id)
       <td><!-- Button trigger modal -->
         
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#assignRoleModal">
@@ -113,8 +109,8 @@
          </form>
       </td>
       @elseif($user->deleted_on ==1)
-      <td><button type="disabled"></button></td>
-      <td><button type="disabled"></button></td>
+      <td><button type="disabled">deleted</button></td>
+      <td><button type="disabled">deleted</button></td>
       @endif
    </tr>
    @endforeach
