@@ -22,7 +22,7 @@
       <td>{{ $user->user_first_name }} </td>
       <td>{{ $user->user_last_name }} </td>
       <td>{{ $user->email }}</td>
-      <td> @if( $user->user_status==1)
+      <td> @if( $user->user_status== 1 || $user->deleted_by == 0)
          <font size="3" color="green">Active</font>
          @else()
          <font size="3" color="red">InActive</font>
@@ -33,21 +33,21 @@
          @if($user->created_at)
          {{ $user->created_at->toFormattedDateString() }}
          @else
-         {{ $user->created_at }}
+         ___
          @endif
       </td>
       <td>
          @if($user->created_at)
          {{ $user->updated_at->toFormattedDateString() }}
          @else
-         {{ $user->created_at }}
+         ___
          @endif
       </td>
       <td>
          @if( $user->deleted==1 )
          <font size="3" color="red">deleted</font>
          @else()
-         Not deleted
+         ___
          @endif
       </td>
       <td>{{ $user->deleted_on }}</td>
@@ -55,9 +55,12 @@
          @foreach($users as $item)
          @if($item->id==$user->deleted_by)
          {{$item->user_first_name}}
+         @elseif($user->deleted_by== null)
+         _
          @endif
          @endforeach
       </td>
+      @if($user->deleted_on ==0 || Auth::user()->id)
       <td><!-- Button trigger modal -->
         
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#assignRoleModal">
@@ -99,14 +102,16 @@
         </div>
       <td><a href ="/users/edit/{{$user->id}}" class="btn btn-sm btn-primary">edit</a></td>
       <td>
-         @if(Auth::user()->id != $user->id)
          <form action="/usersdelete/{{$user->id}}" method="post" onsubmit()="are you sure you want to delete">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
             <button class="btn btn-sm btn-danger"  type="submit">delete</button>
          </form>
-         @endif
       </td>
+      @elseif($user->deleted_on ==1)
+      <td><button type="disabled">deleted</button></td>
+      <td><button type="disabled">deleted</button></td>
+      @endif
    </tr>
    @endforeach
 </table>

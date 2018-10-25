@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\UserRole;
+use App\User;
+use Auth;
+use Session;
 
 class HomeController extends Controller
 {
@@ -21,6 +25,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('layouts.master');
+            // return view('layouts.master');
+             // User role
+        $role = Auth::user()->role; 
+    
+        // Check user role
+        switch ($role) {
+            case 'admin':
+                    return view('layouts.master');
+                break;
+            case 'official':
+                    return view('layouts.official');
+                break; 
+            default:
+                    return '/login'; 
+                break;
+        }
     }
+    
 }

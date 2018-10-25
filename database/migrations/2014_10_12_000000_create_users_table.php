@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable()->default('adminkisborana@gmail.com');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
+            $table->string('role', 50)->default('admin');
             $table->tinyInteger('user_status')->default(1);
             $table->tinyInteger('deleted')->default(0);
             $table->timestamp('deleted_on')->nullable();
@@ -30,10 +31,10 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
         DB::table('users')->insert(array(
-            // ['user_first_name'=>'Admin'],
-            // ['user_last_name'=>'KisBorana'],
-            // ['user_email'=>'adminkisborana@gmail.com'],
+          
             ['password' => Hash::make('admin')],
+            
+            
         ));
     }
 

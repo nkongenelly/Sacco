@@ -14,6 +14,8 @@
 // Route::get('/', function () {
 //     return view('layouts.master');
 // });
+
+//user routes
 Route::get('/adduser', 'UserController@create');
 Route::post('/adduser', 'UserController@store');
 Route::get('/users', 'UserController@index');
@@ -21,10 +23,17 @@ Route::get('/users/edit/{userId}', 'UserController@edit');
 Route::patch('/users/{userId}', 'UserController@update');
 Route::patch('/usersdelete/{userId}', 'UserController@destroy');
 Route::get('/loggedusers', 'UserController@loggedUser');
+
+//next of kin
+Route::get('/nextofkin', 'NextofKinController@index');
+Route::get('/nextOfKin/edit/{nextofkinId}', 'NextofKinController@edit');
+Route::patch('/nextofkin/{nextofkinId}', 'UserController@update');
+
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-
+Route::get('/admins','HomeController@adminHome');
 //role routes
 Route::get('/roles', 'RoleController@index');
 Route::get('/role/create', 'RoleController@create');
@@ -34,6 +43,7 @@ Route::post('/userrole/{id}', 'RoleController@storeUserRole');
 Route::patch('/roles/{id}', 'RoleController@update');
 Route::patch('/roles/{id}', 'RoleController@destroy');
 
+<<<<<<< HEAD
 //members routes
 Route::get('/members', 'MemberController@index');
 Route::get('/members/create', 'MemberController@create');
@@ -46,3 +56,5 @@ Route::post('/kin', 'NextofkinController@store');
 //member documents
 Route::get('/documents/create/{id}', 'MemberdocumentController@create');
 Route::post('/documents', 'MemberdocumentController@store');
+=======
+>>>>>>> 644ac631ffe68765f4861a5ff03978592644492e

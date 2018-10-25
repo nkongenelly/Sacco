@@ -23,8 +23,7 @@ body{
 </style>
 </head>
 <body>
-    @include('admins.adminnav')
-
+    @include('users.navbar')
     @yield('content')
     
     @include('layouts.footer')
