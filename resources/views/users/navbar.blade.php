@@ -34,8 +34,8 @@
                     Savings
                 </a>
                 <div class="dropdown-menu" aria-labelledby="rolesDropdownMenu">
-                <a class="dropdown-item" href="#">View Savings</a>  
-                <a class="dropdown-item" href="#">Create/Upload Savings</a>
+                <a class="dropdown-item" href="/savings">View Savings</a>
+                <a class="dropdown-item" href="/savings/create">Create/Upload Savings</a>
                 <a class="dropdown-item" href="#">Upload Savings</a>
                 <a class="dropdown-item" href="#">Transfer Savings</a>
                 </div>
