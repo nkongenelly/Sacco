@@ -38,7 +38,7 @@ class HomeController extends Controller
                     return view('layouts.official');
                 break; 
             default:
-                    return redirect('/login'); 
+                    return ('/login'); 
                 break;
         }
     }
