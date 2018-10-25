@@ -20,17 +20,7 @@ Route::get('/users', 'UserController@index');
 Route::get('/users/edit/{userId}', 'UserController@edit');
 Route::patch('/users/{userId}', 'UserController@update');
 Route::patch('/usersdelete/{userId}', 'UserController@destroy');
-<<<<<<< HEAD
-Route::patch('/assignRole/{userId}', 'UserController@assignRole');
-
-
-Route::get('/nextofkin', 'NextofKinController@index');
-Route::get('/nextOfKin/edit/{nextofkinId}', 'NextofKinController@edit');
-Route::patch('/nextofkin/{nextofkinId}', 'NextofKinController@update');
-
-=======
 Route::get('/loggedusers', 'UserController@loggedUser');
->>>>>>> 0a17da911bda79f5dc035a7195175755a25a037e
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
