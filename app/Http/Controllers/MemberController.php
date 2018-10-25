@@ -16,7 +16,7 @@ class MemberController extends Controller
     public function index()
     {
         $members = Member::all();
-        return view('nextOfKin.create', compact('members'));
+        return view('members.index', compact('members'));
     }
 
     /**
@@ -26,7 +26,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('members.create');
+        $members = Member::all();
+        return view('members.create', compact('members'));
     }
 
     /**

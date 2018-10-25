@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
  
 use App\NextOfKin;
 
-use App\Member_document;
+use App\MemberDocument;
 
 use App\Member;
 
 use App\MemberDocumentType;
 
+use Auth;
 
 class MemberDocumentController extends Controller
 {
@@ -49,11 +50,13 @@ class MemberDocumentController extends Controller
         $this->validate(request(),[
             'document_name'=>'required'
         ]);
-        Member_document::create(request([
+        MemberDocument::create(request([
             'member_id',
             'document_name',
             'document_type_id',
+            'created_by' => Auth::user()->id,
         ]));
+        return redirect('/roles');
     }
 
     /**
