@@ -21,7 +21,6 @@
                 <div class="dropdown-menu" aria-labelledby="rolesDropdownMenu">
                     <a class="dropdown-item" href="/role/create">Add Role</a>
                     <a class="dropdown-item" href="/roles">View & Manage roles</a>
-                    <a href="/documents/create/{{member->id}}" class="btn btn-primary sm">Add documents</a>
                 </div>
             </li>
             <li class="nav-item active dropdown">
