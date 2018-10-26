@@ -12,9 +12,9 @@ class Saving extends Model
         return $this->belongsTo('App\Member');
     }
 
-    public function savingType()
+    public function saving_type()
     {
-        return $this->hasMany('App\SavingsType');
+        return $this->belongsTo('App\SavingType');
     }
 
 }

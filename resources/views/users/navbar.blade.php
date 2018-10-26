@@ -10,9 +10,9 @@
                     Members
                 </a>
                 <div class="dropdown-menu" aria-labelledby="usersDropdownMenu">
-                    <a class="dropdown-item" href="#">Member Registration</a>
-                    <a class="dropdown-item" href="#">View Members</a>
-                    <a class="dropdown-item" href="#">Update Member Details</a>
+                    <a class="dropdown-item" href="/members/create">Member Registration</a>
+                    <a class="dropdown-item" href="/members">View Members</a>
+                    <a class="dropdown-item" href="/documents">Member Documents</a>
                     <a class="dropdown-item" href="/nextofkin">Next of Kin</a>
 
                 </div>
@@ -24,6 +24,7 @@
                 <div class="dropdown-menu" aria-labelledby="rolesDropdownMenu">
                 <a class="dropdown-item" href="/loanApplication" >Loan Application</a>  
                 <a class="dropdown-item" href="#">Loan Disbursements</a>
+                <a class="dropdown-item" href="#">Loan Application</a>  
                 <a class="dropdown-item" href="#">Loan Amortization</a>
                 <a class="dropdown-item" href="#">Loan Deduction Schedule</a>
                 <a class="dropdown-item" href="#">Loan Payment</a>
@@ -35,8 +36,8 @@
                     Savings
                 </a>
                 <div class="dropdown-menu" aria-labelledby="rolesDropdownMenu">
-                <a class="dropdown-item" href="#">View Savings</a>  
-                <a class="dropdown-item" href="#">Create/Upload Savings</a>
+                <a class="dropdown-item" href="/savings">View Savings</a>
+                <a class="dropdown-item" href="/savings/create">Create/Upload Savings</a>
                 <a class="dropdown-item" href="#">Upload Savings</a>
                 <a class="dropdown-item" href="#">Transfer Savings</a>
                 </div>

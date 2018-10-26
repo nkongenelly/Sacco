@@ -1,8 +1,9 @@
 @extends('layouts.official')
 @section('content')
 <div class="container">
-  <form action="/documents" method="POST">
-    @csrf
+  <form action="/documents/{{$memberDocument->id}}" method="POST">
+    {{ csrf_field() }}
+    {{ method_field('PATCH') }}
     <input type="hidden" name="member_id" class="form-control" value="{{$member->id}}">
     <div class="form-group col-md-6">
       <label for="memberName">Member Name</label>
@@ -25,7 +26,8 @@
       <input class="form-control" type="file" name="document_name">
     </div>
     <div class="form-group col-md-6">
-      <input class="btn btn-primary sm" name="submit" value="Upload Document" type="submit">
+    <a href="/documents" class="btn btn-primary">Go Back</a>
+      <input class="btn btn-primary sm" name="update" value="Upload Document" type="submit">
     </div>
   </form>
 </div>
