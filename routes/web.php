@@ -43,3 +43,8 @@ Route::post('/userrole/{id}', 'RoleController@storeUserRole');
 Route::patch('/roles/{id}', 'RoleController@update');
 Route::patch('/roles/{id}', 'RoleController@destroy');
 
+//Loans routes
+Route::get('/loanApplication', 'LoanController@index' );
+Route::get('/searchMember/{member}', 'LoanController@create' );
+Route::get('/loanApplication/{id}', 'LoanController@createLoan' );
+

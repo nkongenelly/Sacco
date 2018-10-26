@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Member;
 
 class LoanController extends Controller
 {
@@ -13,7 +14,7 @@ class LoanController extends Controller
      */
     public function index()
     {
-        //
+        return view('loans/createIndex');
     }
 
     /**
@@ -21,9 +22,20 @@ class LoanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($member)
     {
-        //
+        // dd($member);
+        //Search for the requesed member details
+        $members = Member::where('member_first_name',$member)->get();
+    //    dd($members);
+        echo json_encode($members);
+        // return view('loans/createIndex',compact('members'));
+    }
+    public function createLoan($id){
+        $member = Member::where('id',$id)->get();
+        //    dd($member);
+        echo json_encode($member);
+        //  return view('loans/createLoan',compact('member'));
     }
 
     /**

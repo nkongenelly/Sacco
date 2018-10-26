@@ -22,7 +22,7 @@
                     Loans
                 </a>
                 <div class="dropdown-menu" aria-labelledby="rolesDropdownMenu">
-                <a class="dropdown-item" href="#">Loan Application</a>  
+                <a class="dropdown-item" href="/loanApplication" >Loan Application</a>  
                 <a class="dropdown-item" href="#">Loan Disbursements</a>
                 <a class="dropdown-item" href="#">Loan Amortization</a>
                 <a class="dropdown-item" href="#">Loan Deduction Schedule</a>
