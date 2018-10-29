@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Loan;
-use App\Saving;
-use App\LoanGuarantor;
 use App\Member;
-class LoanDisbursmentController extends Controller
+use App\Loan;
+class LoanAmortizationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,38 +14,7 @@ class LoanDisbursmentController extends Controller
      */
     public function index()
     {
-        //show loans applied that are 3 times members savings or less
-        $loans =Loan::all();
-        $sum=0;
-        foreach($loans as $loan){
-            $savings = Saving::where(['member_id'=>$loan->member_id,'deleted'=>'0'])
-                                ->select('saving_amount')
-                                ->get();
-            foreach($savings as $saving){
-                $sum +=$saving->saving_amount;
-
-            }
-        //verify guarantors
-        $sumGuarantors =0;
-        $guarantors = LoanGuarantor::where(['loan_id'=>$loan->id,'deleted'=>'0'])
-                                    ->select('loan_id','guaranteed_amount')
-                                    ->get();
-        foreach($guarantors as $guarantor){
-            $memberId = Member::where(['member_id'=>$guarantor->member_id])
-                            ->select('member_id')
-                            ->get();
-            foreach($memberId as $member){
-                $sumGuarantors += $member->savings->saving_amount;
-            }
-            
-        }
-       
-        }
-        
-        // dd(count($guarantors) <=3);
-        
-        return view('loans.disburseLoanIndex', compact('loans','sum','guarantors','guarantor','sumGuarantors'));
-        
+        return view('loans.amortizationIndex');
     }
 
     /**
@@ -55,10 +22,28 @@ class LoanDisbursmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($name)
     {
+        // dd(request('member_first_name'));
+        //Search for a particular member and use that member_id to get member loan details
+        $memberName = Member::where(['member_first_name'=>$name,'deleted'=>'0'])
+                            ->get();
+                    //    dd($memberName);     
+        echo json_encode($memberName);
     }
+    
 
+    public function fetchLoans($id)
+    {
+        // dd(request('member_first_name'));
+        //Search for a particular member and use that member_id to get member loan details
+        $memberLoans = Loan::join('members','members.id','=','loans.member_id')
+                        ->where(['loans.member_id'=>$id,'loans.deleted'=>'0'])
+                        ->select('loans.*','members.member_first_name','members.member_last_name','members.id')
+                        ->get();
+
+        echo json_encode($memberLoans);
+    }
     /**
      * Store a newly created resource in storage.
      *

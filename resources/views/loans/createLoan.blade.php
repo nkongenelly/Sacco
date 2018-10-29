@@ -16,6 +16,7 @@
             <input class="form-control" type="number" name="loan_installments">
         </div>
         <div class="form-group col-md-6">
+            
             <label for="nationalId">Loan Type</label>
             <input class="form-control" name="loan_type_id">
         </div>

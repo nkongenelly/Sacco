@@ -51,6 +51,16 @@ Route::patch('/roles/{id}', 'RoleController@destroy');
 Route::get('/loanApplication', 'LoanController@index' );
 Route::get('/searchMember/{member}', 'LoanController@create' );
 Route::get('/loanApplication/{id}', 'LoanController@createLoan' );
+Route::post('/loansCreate', 'LoanController@store' );
+        //disburse Loan
+Route::get('/disburseLoan', 'LoanDisbursmentController@index' );
+        //Loan Amortization
+Route::get('/amortization', 'LoanAmortizationController@index' );
+// Route::get('/amortizationSearch/{name}', function(){
+//     dd('yes');
+// } );
+Route::get('/amortizationSearch/{name}', 'LoanAmortizationController@create' );
+Route::get('/fetchLoans/{id}', 'LoanAmortizationController@fetchLoans' );
 //members
 Route::get('/members', 'MemberController@index');
 Route::get('/members/create', 'MemberController@create');

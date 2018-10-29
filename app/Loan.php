@@ -3,13 +3,28 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\LoanType;
+use App\Member;
+use App\LoanStatus;
+use App\LoanGuarantor;
+use App\LoanDefaulter;
+use App\LoanPayment;
 
 class Loan extends Model
 {
+    protected $guarded = [];
     //defines the relationship of loan statuses having many loans
-     public function loanStatuses()
+     public function loanStatus()
     {
         return $this->belongsTo('App\LoanStatus');
+    }
+    public function loanType()
+    {
+        return $this->belongsTo('App\LoanType');
+    }
+    public function member()
+    {
+        return $this->belongsTo('App\Member');
     }
 
     //defines the relationship of a loan having many guarantors
@@ -26,7 +41,7 @@ class Loan extends Model
     }
 
     //defines the relationship of a loan having many loan payments
-    public function loanPayments()
+    public function loanPayment()
     {
         return $this->belongsTo('App\LoanPayment');
     }
