@@ -23,7 +23,8 @@ class MemberDocumentController extends Controller
      */
     public function index()
     {
-        //
+        $memberDocuments = MemberDocument::all();
+        return view('memberDocuments.index', compact('memberDocuments'));
     }
 
     /**
@@ -56,7 +57,7 @@ class MemberDocumentController extends Controller
             'document_type_id',
             'created_by' => Auth::user()->id,
         ]));
-        return redirect('/roles');
+        return redirect('/documents');
     }
 
     /**
@@ -79,6 +80,8 @@ class MemberDocumentController extends Controller
     public function edit($id)
     {
         //
+        $memberDocument = MemberDocument::find($id);
+        return view('memberDocuments.edit', compact('memberDocument'));
     }
 
     /**
@@ -91,6 +94,16 @@ class MemberDocumentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate(request(),[
+            'document_name'=>'required'
+        ]);
+        MemberDocument::where('id', $id)->update(request([
+            'member_id',
+            'document_name',
+            'document_type_id',
+            'created_by' => Auth::user()->id,
+        ]));
+        return redirect('/documents');
     }
 
     /**
@@ -102,5 +115,11 @@ class MemberDocumentController extends Controller
     public function destroy($id)
     {
         //
+        MemberDocument::where('id', $id) ->update([
+            'deleted' => 1, 'deleted_on' => date('Y-m-d H:i:s'), 'deleted_by' => Auth::user()->id
+        ]);
+        return redirect('/documents');
+
+
     }
 }

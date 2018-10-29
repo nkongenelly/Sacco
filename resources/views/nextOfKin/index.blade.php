@@ -3,7 +3,7 @@
 <table class="table table-condensed table-striped table-bordered table-hover">
    <tr>
       <th>#</th>
-      <th>Member Name</th>
+      <th>Member Id</th>
       <th>first name</th>
       <th>Last name</th>
       <th>Email</th>
@@ -16,7 +16,7 @@
       <th>deleted by</th>
       <th colspan="3">Actions</th>
    </tr>
-   @foreach($nextOfKins as $nextOfKin)
+    @foreach($nextOfKins as $nextOfKin)  
    <tr>
       <td>{{ $nextOfKin->id }}</td>
       <td>{{ $nextOfKin->member_id }} </td>
@@ -65,13 +65,9 @@
       
       <td><a href ="/nextOfKin/edit/{{$nextOfKin->id}}" class="btn btn-sm btn-primary">edit</a></td>
       <td>
-         <form action="/nextOfKindelete/{{$nextOfKin->id}}" method="post" onsubmit()="are you sure you want to delete">
-            {{ csrf_field() }}
-            {{ method_field('PATCH') }}
-            <button class="btn btn-sm btn-danger"  type="submit">delete</button>
-         </form>
+         <a href="/nextOfKin/delete/{{$nextOfKin->id}}"  onclick=" return confirm ('are you sure you want to delete')" class="btn btn-sm btn-danger">Delete</a>
       </td>
    </tr>
-   @endforeach
+    @endforeach
 </table>
 @endsection
