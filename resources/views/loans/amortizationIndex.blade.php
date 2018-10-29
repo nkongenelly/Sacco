@@ -17,6 +17,10 @@
 </div>
 <div id="membersList"></div>
 <div id="membersLoans"></div>
+<div class="row" id ="amortization">
+<div id="LoanAmortization" class="col-sm-3"></div>
+<div id="LoanAmortization1" class="col-sm-9"></div>
+</div>
 </div>
 <script type="text/javascript">
         
@@ -97,6 +101,46 @@ function createObject(readyStateFunction,requestMethod,requestUrl, sendData = nu
         tableData += "</div></table>";
         document.getElementById("membersLoans").innerHTML = tableData;
         document.getElementById('membersLoans').style.display = "block";
+    }
+    function armotizationCalculated(id){
+        createObject(displayAmortization, methods[0], baseUrl + "calculateAmortization/"+id)
+    }
+    function displayAmortization(responseTxt){
+        document.getElementById('searchMember').style.display = "none";
+        document.getElementById('membersList').style.display = "none";
+        document.getElementById('membersLoans').style.display = "none";
+       
+        var responseObj = JSON.parse(responseTxt);
+        var count =0,tData; 
+        var tableData = "<div class='container'><table style='float: left;' class = 'table table-bordered table-striped table-condensed'><tr><th>#</th><th>Raw Monthly Interest</th></tr>";
+        for(tData in responseObj){
+            if(responseObj[tData]==responseObj.interestA){
+                
+                for(tData1 in responseObj[tData]){
+                    count++;
+            tableData +="<tr><td>"+ 'Month '+count+"</td>";
+            tableData +="<td>"+ responseObj[tData][tData1]+"</td></tr>";
+                }
+            }
+
+        }
+        tableData += "</table></div>";
+
+         var tableData1 = "<div class='row' style='padding:20px;'><table style='display: inline-block,width:100%;' class = 'table table-bordered table-striped table-condensed'><tr><th>Calculated Costs for"+responseObj.name+"</th></tr>";
+            
+            tableData1 +="<tr><td><strong>"+ 'LOAN AMOUNT =' + "</strong>"+responseObj.loanAmount+"</td></tr>";
+            tableData1 +="<tr><td><strong>"+ 'MONTHLY INTEREST =' + "</strong>"+ responseObj.monthlyInterest+"</td></tr>";
+            tableData1 +="<tr><td><strong>"+ 'MONTHLY PAY =' + "</strong>"+ responseObj.monthlyPay+"</td></tr>";
+            tableData1 +="<tr><td><strong>"+ 'TOTAL INTEREST =' + "</strong>"+ responseObj.interest+"</td></tr>";
+            tableData1 +="<tr><td><strong>"+ 'TOTAL PAYABLE =' + "</strong>"+ responseObj.totalRefund+"</td></tr>";
+        
+      
+        tableData1 += "</table></div>";
+
+        document.getElementById("LoanAmortization").innerHTML = tableData;
+        document.getElementById("LoanAmortization1").innerHTML = tableData1;
+        document.getElementById('amortization').style.display = "block";
+        // document.getElementById('LoanAmortization1').style.display = "block";
     }
     document.getElementById("searchMemberForm").addEventListener("submit", searchName);
 </script>

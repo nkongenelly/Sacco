@@ -55,7 +55,7 @@ class LoanController extends Controller
         $results['members']=$member;
         $results['loantypes']=$loanTypes;
         $results['loanstatus']=$loanStatus;
-        $results['banks']=$banks;;
+        $results['banks']=$banks;
         echo json_encode($results);
         //  return view('loans/createLoan',compact('member'));
     }

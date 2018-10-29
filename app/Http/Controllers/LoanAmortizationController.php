@@ -61,10 +61,54 @@ class LoanAmortizationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function calculateAmortization($id)
     {
-        //
+        $loans = Loan::join('members','members.id','=','loans.member_id')
+                        ->where(['loans.member_id'=>$id,'loans.deleted'=>'0'])
+                        ->select('loans.loan_amount', 'loans.interest_rate','loans.loan_installments','members.member_first_name','members.member_last_name')
+                        ->get();
+                       
+    //loop through each month and ccalculate the interest of each
+    foreach($loans as $loan){
+    $count=0;
+    $interest =0;
+    $interestA = array();
+    $loanAmount=$loan->loan_amount;
+    $name = $loan->member_first_name.' '.$loan->member_last_name;
+    // dd(0==$loan->loan_installments);
+    for($i=0; $i<$loan->loan_installments; $i++){
+        // dd($loan->member_first_name.' '.$loan->member_last_name);
+        $count++;
+        if($count ==1){
+            $balance = $loan->loan_amount;
+            $interest += ($loan->interest_rate/100)*$balance;
+            $interestOnly = ($loan->interest_rate/100)*$balance;
+            array_push($interestA,$interestOnly);
+        }else{
+        
+        $balance1 =($loan->loan_amount/$loan->loan_installments)*($count-1);
+        $balance = ($loan->loan_amount)-$balance1;
+        $interest += ($loan->interest_rate/100)*$balance;
+        $interestOnly = ($loan->interest_rate/100)*$balance;
+        array_push($interestA,$interestOnly);
+
+            }
+    
     }
+    $monthlyInterest= $interest/$loan->loan_installments;
+    $monthlyPay = ($loan->loan_amount/$loan->loan_installments)+$monthlyInterest;
+    $totalRefund = $monthlyPay*$loan->loan_installments;
+    }
+       $results['name']=$name;
+        $results['loanAmount']=$loanAmount;
+        $results['interestA']=$interestA;
+        $results['interest']=$interest;
+        $results['monthlyPay']=$monthlyPay;
+        $results['monthlyInterest']=$monthlyInterest;
+        $results['totalRefund']=$totalRefund;
+        // dd($results);
+        echo json_encode($results);
+}
 
     /**
      * Show the form for editing the specified resource.

@@ -61,6 +61,7 @@ Route::get('/amortization', 'LoanAmortizationController@index' );
 // } );
 Route::get('/amortizationSearch/{name}', 'LoanAmortizationController@create' );
 Route::get('/fetchLoans/{id}', 'LoanAmortizationController@fetchLoans' );
+Route::get('/calculateAmortization/{id}', 'LoanAmortizationController@calculateAmortization' );
 //members
 Route::get('/members', 'MemberController@index');
 Route::get('/members/create', 'MemberController@create');
