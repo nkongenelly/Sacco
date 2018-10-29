@@ -50,7 +50,7 @@
          @endforeach
       </td>
       @if($expense->deleted_on ==0 || Auth::user()->id)
-      <td><!-- Button trigger modal -->
+      <td>
        <td><a href ="/users/edit/{{$user->id}}" class="btn btn-sm btn-primary">edit</a></td>
       <td>
          <form action="/usersdelete/{{$user->id}}" method="post" onsubmit()="are you sure you want to delete">

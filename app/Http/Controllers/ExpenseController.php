@@ -47,9 +47,7 @@ class ExpenseController extends Controller
             'expense_name' => 'required',
             'expense_type_id' => 'required',
         ]);
-        // $password = Hash::make($request->password);
-       
-        Expense::create(request([
+         Expense::create(request([
             'expense_name' , 'expense_type_id' ,  'created_by' => Auth::user()->id,
             'role' => 'official',
         ]));
