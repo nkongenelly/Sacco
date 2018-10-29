@@ -29,6 +29,10 @@ Route::get('/nextofkin', 'NextofKinController@index');
 Route::get('/nextOfKin/edit/{nextofkinId}', 'NextofKinController@edit');
 Route::patch('/nextofkin/{nextofkinId}', 'UserController@update');
 
+//expenses
+Route::get('/expenses', 'ExpenseController@index');
+Route::get('/addexpense', 'ExpenseController@create');
+Route::post('/addexpense', 'ExpenseController@store');
 
 Auth::routes();
 
